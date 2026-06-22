@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  secureschedai:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: secureschedai
+    volumes:
+      - ../results:/app/results
+    command: python main.py
