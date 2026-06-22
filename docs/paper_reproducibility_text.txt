@@ -1,0 +1,9 @@
+Suggested paper text:
+
+To facilitate reproducibility and future research, the LASTD-2026 dataset,
+source-code modules, runtime monitoring scripts, enforcement utilities,
+figure-generation scripts, Docker configuration, and Kubernetes deployment
+manifests are publicly available through the SecureSchedAI GitHub repository.
+The repository also includes instructions for running the experimental demo,
+regenerating key figures, and deploying the framework in containerized
+environments.
