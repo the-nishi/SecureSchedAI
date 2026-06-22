@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secureschedai
+  labels:
+    app: secureschedai
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: secureschedai
+  template:
+    metadata:
+      labels:
+        app: secureschedai
+    spec:
+      containers:
+      - name: secureschedai
+        image: secureschedai:latest
+        imagePullPolicy: IfNotPresent
+        command: ["python", "main.py"]
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
