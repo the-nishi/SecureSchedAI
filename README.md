@@ -1,143 +1,98 @@
-# SecureSchedAI
-
-SecureSchedAI is a security-aware AI framework for Linux operating systems that integrates
-DQN-based adaptive scheduling with LSTM-based intelligent threat detection.
-
-This repository contains the dataset, paper figures, source-code modules, reproducibility scripts,
-Docker support, and Kubernetes deployment manifests.
-
-## Repository Structure
+## Dataset Location
 
 ```text
-SecureSchedAI/
-├── dataset/
-│   └── LASTD_2026_synthetic_linux_runtime_dataset.xlsx
-├── figures/
-│   ├── fig2_procfs_kernel_communication.png
-│   ├── fig4_ubuntu_runtime_monitoring.png
-│   ├── fig5_security_aware_enforcement.png
-│   ├── fig6_runtime_logs.png
-│   ├── fig7_confusion_matrix.png
-│   ├── fig8_precision_recall_curve.png
-│   ├── fig9_precision_recall_curve_large.png
-│   └── fig10_kubernetes_deployment_demo.png
-├── src/
-│   ├── scheduler/dqn_scheduler.py
-│   ├── detector/lstm_detector.py
-│   ├── monitoring/runtime_monitor.py
-│   └── enforcement/security_enforcement.py
-├── scripts/
-│   └── generate_paper_figures.py
-├── docker/
-│   └── docker-compose.yml
-├── kubernetes/
-│   ├── deployment.yaml
-│   └── service.yaml
-├── requirements.txt
-├── Dockerfile
-└── main.py
+dataset/LASTD_2026_synthetic_linux_runtime_dataset.xlsx
 ```
 
-## Python Version
+## Linux Execution Guide
 
-Recommended Python version:
+Clone the repository:
 
 ```bash
-Python 3.11
+git clone https://github.com/the-nishi/SecureSchedAI.git
+cd SecureSchedAI
 ```
 
-## Installation
+Create a virtual environment:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Run Reproducibility Demo
+Run the reproducibility demo:
 
 ```bash
 python main.py
 ```
 
-The output metrics will be saved in:
-
-```text
-results/reproducibility_metrics.json
-```
-
-## Generate Paper Figures
+Run runtime monitoring:
 
 ```bash
-python scripts/generate_paper_figures.py
+python src/monitoring/runtime_monitor.py
 ```
 
-The generated figures will be saved in the `figures/` folder.
-
-## Docker Reproducibility
-
-Build the Docker image:
+Run DQN scheduler demo:
 
 ```bash
-docker build -t secureschedai .
+python src/scheduler/dqn_scheduler.py
 ```
 
-Run the container:
+Run LSTM threat detector demo:
 
 ```bash
-docker run --rm -v $(pwd)/results:/app/results secureschedai
+python src/detector/lstm_detector.py
 ```
 
-Or use Docker Compose:
+Run security-aware enforcement demo:
 
 ```bash
-cd docker
-docker compose up --build
+python src/enforcement/security_enforcement.py
 ```
 
-## Kubernetes Deployment
+## Reproducibility
 
-Build the local image:
+This repository contains:
 
-```bash
-docker build -t secureschedai:latest .
-```
+* LASTD-2026 Dataset
+* Source Code Modules
+* Runtime Monitoring Scripts
+* Security-Aware Enforcement Utilities
+* Figure Generation Scripts
+* Docker Configuration
+* Kubernetes Deployment Manifests
 
-Apply Kubernetes manifests:
+to support reproducibility of the SecureSchedAI framework and facilitate future research on AI-assisted Linux operating systems.
 
-```bash
-kubectl apply -f kubernetes/deployment.yaml
-kubectl apply -f kubernetes/service.yaml
-```
+## Experimental Reproduction
 
-Check pod status:
+To reproduce the reported workflow:
 
-```bash
-kubectl get pods
-kubectl get deployments
-```
+1. Install all dependencies using `requirements.txt`.
+2. Load the LASTD-2026 dataset from the `dataset/` directory.
+3. Execute `main.py` to run the reproducibility pipeline.
+4. Generate figures using `scripts/generate_paper_figures.py`.
+5. Deploy the framework using Docker or Kubernetes if containerized evaluation is required.
 
-Delete deployment:
+## Repository Purpose
 
-```bash
-kubectl delete -f kubernetes/
-```
+This repository accompanies the SecureSchedAI research paper and provides public access to:
 
-## Dataset
+* Dataset resources
+* Source-code artifacts
+* Runtime monitoring examples
+* Linux enforcement demonstrations
+* Figure generation scripts
+* Deployment configurations
 
-The LASTD-2026 dataset is provided in the `dataset/` folder. It contains Linux runtime samples
-for normal and malicious activities and supports evaluation of adaptive scheduling and
-intelligent threat detection.
-
-## Paper Figure Mapping
-
-- Fig. 2: `figures/fig2_procfs_kernel_communication.png`
-- Fig. 4: `figures/fig4_ubuntu_runtime_monitoring.png`
-- Fig. 5: `figures/fig5_security_aware_enforcement.png`
-- Fig. 6: `figures/fig6_runtime_logs.png`
-- Fig. 7: `figures/fig7_confusion_matrix.png`
-- Fig. 8: `figures/fig8_precision_recall_curve.png`
-- Fig. 9: `figures/fig9_precision_recall_curve_large.png`
-- Fig. 10: `figures/fig10_kubernetes_deployment_demo.png`
+for transparency, validation, and reproducible experimentation.
 
 ## Citation
 
-If you use this dataset or code, please cite the SecureSchedAI paper.
+If you use this dataset, source code, figures, or deployment artifacts in your research, please cite the SecureSchedAI paper.
